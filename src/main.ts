@@ -16,7 +16,12 @@ async function run(): Promise<void> {
       const tmpDir = tmp.dirSync()
       directory = path.join(tmpDir.name, `gcc-${release}`)
     }
-    await setup.install(release, directory)
+
+    let nooverwrite = core.getInput('nooverwrite')
+    if (!nooverwrite) {
+        await setup.install(release, directory)
+    }
+
     core.addPath(path.join(directory, 'bin'))
   } catch (error) {
     core.setFailed(error.message)

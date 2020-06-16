@@ -6,6 +6,9 @@ inputs:
     description: 'GNU Embedded Toolchain for Arm release name, in the V-YYYY-qZ format (e.g. "9-2019-q4")'
   directory:
     description: 'Directory to unpack GCC to. Defaults to a temporary directory.'
+  nooverwrite:
+    description: 'If the output directory exist, do not download anew'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
